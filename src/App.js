@@ -45,6 +45,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h2>Vigenere</h2>
+        <h6>Default alphabet: abcdefghijklmnopqrstuvwxyz</h6>
 
         <p style={{color:'yellow'}}>{cypherText}</p>
       
