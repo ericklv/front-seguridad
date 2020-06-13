@@ -4,6 +4,20 @@
 @import '~antd/dist/antd.compact.css';
 .App {
   text-align: center;
+  display: flex;
+  width: 100%;
+}
+
+.App>.app-view{
+  width: 40%;
+}
+
+.App>.code-view{
+  text-align: left;
+  width: 60%;
+  height: 95vh;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 
 .App-logo {
@@ -57,7 +71,7 @@
   padding: 20px;
   background-color: #F2F4F5;
   border-radius: 5px;
-  width: 50%;
+  width: 80%;
   min-width: 350px;
   margin:auto;
 }
