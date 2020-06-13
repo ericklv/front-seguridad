@@ -16,8 +16,10 @@
   text-align: left;
   width: 60%;
   height: 95vh;
-  overflow-y: auto;
-  overflow-x: auto;
+}
+
+.App>.code-view>pre{
+  height: 95vh;
 }
 
 .App-logo {
