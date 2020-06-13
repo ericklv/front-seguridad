@@ -8,7 +8,7 @@ export const Escitala = () => {
 
   const [text, setText] = useState(null);
   const [key, setKey] = useState(null);
-  const [alphabet,setAlphabet] = useState(null);
+  const [sides,setSides] = useState(null);
   const [cypher,setCypher] = useState(null);
   const [cypherText, setCypherText] = useState(null);
 
@@ -18,7 +18,7 @@ export const Escitala = () => {
 
   const encode = () => {
     setCypherText("...call to API")
-    const body= {alphabet, key,text}
+    const body= {sides,text}
     const headers= {
       'Content-Type':'application/json',
       'Access-Control-Allow-Origin':'*',
@@ -32,7 +32,7 @@ export const Escitala = () => {
     };
 
   
-    fetch(api+'vigenere/'+cypher, requestOptions)
+    fetch(api+'escitala/'+cypher, requestOptions)
       .then(response => response.json())
       .then(data => {
         setCypherText(data.message)
@@ -43,17 +43,17 @@ export const Escitala = () => {
     return (
         <div className="App">
      <header className="App-header">
-      <h1>Vigenere</h1>
-      <h5>Default alphabet: abcdefghijklmnopqrstuvwxyz</h5>
+      <h1>Escitala</h1>
+      <h5>Default: 5 </h5>
       <h4 style={{color:'orange'}}>{cypherText}</h4>  
     </header>
     <div className='card-box'>
     <div className='input-box'>
-    <p>Alphabet:</p>
-    <TextArea placeholder="alphabet"
-              onChange={({target})=>setAlphabet(target.value)} 
+    <p>Sides:</p>
+    <TextArea placeholder="sides"
+              onChange={({target})=>setSides(target.value)} 
               cols="80" 
-              rows="2">{alphabet}</TextArea>
+              rows="1">{sides}</TextArea>
     </div>
     <div className='input-box'>
     <p>Text to encrypt/decrypt:</p>
@@ -64,13 +64,6 @@ export const Escitala = () => {
     
       </div>
               
-    <div className='input-box'>
-    <p>Key text:</p>  
-    <TextArea placeholder="key"
-              onChange={({target})=>setKey(target.value)}
-              cols="80" 
-              rows="2">{key}</TextArea>
-    </div>
     <div className="button-box">
     <Button type="default" onClick={()=>setCypher("encrypt")}>ENCODE</Button>
     <Button type="primary" onClick={()=>setCypher("decrypt")}>DECODE</Button>
