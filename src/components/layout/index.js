@@ -23,7 +23,7 @@ export const BaseLayout = (props) => {
             style={{ height: '100%' }}
           >
             <SubMenu key="sub1" icon={<UserOutlined />} title="Crypto">
-              <Menu.Item key="1">Caesar</Menu.Item>
+              <Menu.Item key="1" onClick={_ => history.push('/caesar')}>Caesar</Menu.Item>
               <Menu.Item key="2" onClick={_ => history.push('/vigenere')}>Vigenere</Menu.Item>
               <Menu.Item key="3" onClick={_ => history.push('/alberti')}>Alberti</Menu.Item>
               <Menu.Item key="4" onClick={_ => history.push('/escitala')}>Escitala</Menu.Item>
