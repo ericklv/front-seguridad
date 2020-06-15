@@ -1,8 +1,11 @@
 import { Button, Input } from 'antd';
 import React, { useState, useEffect } from 'react';
-const { TextArea } = Input;
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import {api,escitalaRaw} from './../../urls';
 
-const api = 'https://seguridad-spring-api.herokuapp.com/api/'
+const { TextArea } = Input;
+const sourceLink = escitalaRaw;
 
 export const Escitala = () => {
 
@@ -10,6 +13,13 @@ export const Escitala = () => {
   const [sides, setSides] = useState(null);
   const [cypher, setCypher] = useState(null);
   const [cypherText, setCypherText] = useState(null);
+  const [source, setSource] = useState('');
+
+  useEffect(() => {
+    fetch(sourceLink, { method: 'get' })
+      .then(response => response.text())
+      .then(data => setSource(data))
+  }, []);
 
   useEffect(_ => {
     if (cypher !== null) encode()
@@ -41,12 +51,13 @@ export const Escitala = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="app-view">
+        <header className="App-header">
         <h1>Escitala</h1>
         <h5>Default: 5 </h5>
         <h4 style={{ color: 'orange' }}>{cypherText}</h4>
-      </header>
-      <div className='card-box'>
+        </header>
+        <div className='card-box'>
         <div className='input-box'>
           <p>Sides:</p>
           <TextArea placeholder="sides"
@@ -68,6 +79,15 @@ export const Escitala = () => {
           <Button type="primary" onClick={() => setCypher("decrypt")}>DECODE</Button>
         </div>
         <p> Erick LV</p>
+        </div>
+      </div>
+      <div className='code-view'>
+        <SyntaxHighlighter language="java"
+          style={dark}
+          showLineNumbers={true}>
+            {"soon"}
+          {/* {source} */}
+        </SyntaxHighlighter>
       </div>
     </div>
   );

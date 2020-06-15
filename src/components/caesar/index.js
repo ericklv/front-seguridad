@@ -2,11 +2,11 @@ import { Button, Input } from 'antd';
 import React, { useState, useEffect } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import {api, caesarRaw} from './../../urls';
 
 const { TextArea } = Input;
 
-const api = 'https://seguridad-spring-api.herokuapp.com/api/'
-const sourceLink = 'https://raw.githubusercontent.com/ericklv/api-seguridad/master/src/main/java/com/caesar/demo/service/CaesarCipher.java'
+const sourceLink = caesarRaw;
 
 export const Caesar = () => {
 

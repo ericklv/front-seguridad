@@ -1,15 +1,21 @@
 import { Layout, Menu } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { useHistory } from "react-router-dom";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const { SubMenu } = Menu;
 const { Content, Sider } = Layout;
 
 
 export const BaseLayout = (props) => {
+  const [path, setPath] = useState(window.location.pathname);
 
   const history = useHistory();
+
+  useEffect(_ =>{
+    if(window.location) setPath(window.location.pathname)
+    console.log(window.location)
+  },[window.location])
 
   return <Layout>
     <Content style={{ padding: '0' }}>
@@ -18,15 +24,15 @@ export const BaseLayout = (props) => {
           <Menu
             title="Options"
             mode="inline"
-            defaultSelectedKeys={['2']}
+            defaultSelectedKeys={[path]}
             defaultOpenKeys={['sub1']}
             style={{ height: '100%' }}
           >
             <SubMenu key="sub1" icon={<UserOutlined />} title="Crypto">
-              <Menu.Item key="1" onClick={_ => history.push('/caesar')}>Caesar</Menu.Item>
-              <Menu.Item key="2" onClick={_ => history.push('/vigenere')}>Vigenere</Menu.Item>
-              <Menu.Item key="3" onClick={_ => history.push('/alberti')}>Alberti</Menu.Item>
-              <Menu.Item key="4" onClick={_ => history.push('/escitala')}>Escitala</Menu.Item>
+              <Menu.Item key="/caesar" onClick={_ => history.push('/caesar')}>Caesar</Menu.Item>
+              <Menu.Item key="/vigenere" onClick={_ => history.push('/vigenere')}>Vigenere</Menu.Item>
+              <Menu.Item key="/alberti" onClick={_ => history.push('/alberti')}>Alberti</Menu.Item>
+              <Menu.Item key="/escitala" onClick={_ => history.push('/escitala')}>Escitala</Menu.Item>
             </SubMenu>
             {/* <SubMenu key="sub2" icon={<LaptopOutlined />} title="subnav 2">
             <Menu.Item key="5">option5</Menu.Item>
