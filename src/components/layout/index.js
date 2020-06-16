@@ -1,7 +1,7 @@
 import { Layout, Menu } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import { useHistory } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 
 const { SubMenu } = Menu;
 const { Content, Sider } = Layout;
@@ -14,7 +14,6 @@ export const BaseLayout = (props) => {
 
   useEffect(_ =>{
     if(window.location) setPath(window.location.pathname)
-    console.log(window.location)
   },[window.location])
 
   return <Layout>
@@ -31,8 +30,7 @@ export const BaseLayout = (props) => {
             <SubMenu key="sub1" icon={<UserOutlined />} title="Crypto">
               <Menu.Item key="/caesar" onClick={_ => history.push('/caesar')}>Caesar</Menu.Item>
               <Menu.Item key="/vigenere" onClick={_ => history.push('/vigenere')}>Vigenere</Menu.Item>
-              <Menu.Item key="/alberti" onClick={_ => history.push('/alberti')}>Alberti</Menu.Item>
-              <Menu.Item key="/escitala" onClick={_ => history.push('/escitala')}>Escitala</Menu.Item>
+              <Menu.Item key="/escitala" onClick={_ => history.push('/escitala')}>Scytale</Menu.Item>
             </SubMenu>
             {/* <SubMenu key="sub2" icon={<LaptopOutlined />} title="subnav 2">
             <Menu.Item key="5">option5</Menu.Item>

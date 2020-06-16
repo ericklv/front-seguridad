@@ -2,15 +2,20 @@ import { Button, Input } from 'antd';
 import React, { useState, useEffect } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import {api,escitalaRaw} from './../../urls';
+import {api,scytaleRaw} from '../../urls';
 
 const { TextArea } = Input;
-const sourceLink = escitalaRaw;
+const sourceLink = scytaleRaw;
 
-export const Escitala = () => {
+const removeSpaces = text => (text||"").toString().replace(/ /g, '');
+const generateOrder = (order,sides) => order? removeSpaces(order): Array.apply(null, new Array(sides)).map(i=> i )
+const checkIsNumber = sides => (Number.isInteger(sides) && sides>0)? sides: 5;
+
+export const Scytale = () => {
 
   const [text, setText] = useState(null);
-  const [sides, setSides] = useState(null);
+  const [sides, setSides] = useState(5);
+  const [order, setOrder] = useState("1,2,3,4,5");
   const [cypher, setCypher] = useState(null);
   const [cypherText, setCypherText] = useState(null);
   const [source, setSource] = useState('');
@@ -27,7 +32,7 @@ export const Escitala = () => {
 
   const encode = () => {
     setCypherText("...call to API")
-    const body = { sides, text }
+    const body = { sides, text, order }
     const headers = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
@@ -41,7 +46,7 @@ export const Escitala = () => {
     };
 
 
-    fetch(api + 'escitala/' + cypher, requestOptions)
+    fetch(api + 'scytale/' + cypher, requestOptions)
       .then(response => response.json())
       .then(data => {
         setCypherText(data.message)
@@ -53,25 +58,35 @@ export const Escitala = () => {
     <div className="App">
       <div className="app-view">
         <header className="App-header">
-        <h1>Escitala</h1>
-        <h5>Default: 5 </h5>
+        <h1>Scytale</h1>
+        <h5>Default sides: 5 </h5>
+        <h5>Default order: 1,2,3,4,5 </h5>
         <h4 style={{ color: 'orange' }}>{cypherText}</h4>
         </header>
         <div className='card-box'>
         <div className='input-box'>
           <p>Sides:</p>
           <TextArea placeholder="sides"
-            onChange={({ target }) => setSides(target.value)}
+            value={sides}
+            onChange={({ target }) => setSides(+target.value )}
             cols="80"
-            rows="1">{sides}</TextArea>
+            rows="1"/>
+        </div>
+        <div className='input-box'>
+          <p>Order:</p>
+          <TextArea placeholder="order"
+            value={order}
+            onChange={({ target }) => setOrder(target.value)}
+            cols="80"
+            rows="1"/>
         </div>
         <div className='input-box'>
           <p>Text to encrypt/decrypt:</p>
           <TextArea placeholder="text"
+            value={text}
             onChange={({ target }) => setText(target.value)}
             cols="80"
-            rows="4">{text}</TextArea>
-
+            rows="4"/>
         </div>
 
         <div className="button-box">
@@ -84,9 +99,8 @@ export const Escitala = () => {
       <div className='code-view'>
         <SyntaxHighlighter language="java"
           style={dark}
-          showLineNumbers={true}>
-            {"soon"}
-          {/* {source} */}
+          showLineNumbers={true}>            
+          {source}
         </SyntaxHighlighter>
       </div>
     </div>

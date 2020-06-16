@@ -1,7 +1,7 @@
 import { Redirect, Route, Switch } from "react-router-dom";
 import React from "react";
 import { Vigenere } from "../components/vigenere";
-import { Escitala } from "../components/escitala";
+import { Scytale } from "../components/scytale";
 import { Caesar } from "../components/caesar";
 import { BaseLayout } from "../components/layout";
 
@@ -29,7 +29,7 @@ export const Routes = () => {
                 path="/escitala"
                 render={() =>
                     <BaseLayout>
-                        <Escitala />
+                        <Scytale />
                     </BaseLayout>
                 }
             />
