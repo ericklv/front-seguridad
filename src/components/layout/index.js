@@ -27,10 +27,12 @@ export const BaseLayout = (props) => {
             defaultOpenKeys={['sub1']}
             style={{ height: '100%' }}
           >
-            <SubMenu key="sub1" icon={<UserOutlined />} title="Crypto">
+            <SubMenu key="sub1" icon={<UserOutlined/>} title="Crypto">
               <Menu.Item key="/caesar" onClick={_ => history.push('/caesar')}>Caesar</Menu.Item>
               <Menu.Item key="/vigenere" onClick={_ => history.push('/vigenere')}>Vigenere</Menu.Item>
               <Menu.Item key="/escitala" onClick={_ => history.push('/escitala')}>Scytale</Menu.Item>
+              <Menu.Item key="/rc4" onClick={_ => history.push('/rc4')}>RC4</Menu.Item>
+              {/*<Menu.Item key="/vernam" onClick={_ => history.push('/vernam')}>Vernam</Menu.Item>*/}
             </SubMenu>
             {/* <SubMenu key="sub2" icon={<LaptopOutlined />} title="subnav 2">
             <Menu.Item key="5">option5</Menu.Item>
