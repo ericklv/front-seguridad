@@ -3,6 +3,7 @@ import React from "react";
 import {Vigenere} from "../components/vigenere";
 import {Scytale} from "../components/scytale";
 import {Caesar} from "../components/caesar";
+import {DES} from "../components/des";
 import {BaseLayout} from "../components/layout";
 import {Vernam} from "../components/vernam";
 import {RC4} from "../components/rc4";
@@ -48,6 +49,14 @@ export const Routes = () => {
                    render={() =>
                        <BaseLayout>
                            <RC4/>
+                       </BaseLayout>
+                   }
+            />
+            <Route exact
+                   path="/des"
+                   render={() =>
+                       <BaseLayout>
+                           <DES/>
                        </BaseLayout>
                    }
             />

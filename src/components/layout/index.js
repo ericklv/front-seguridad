@@ -32,6 +32,7 @@ export const BaseLayout = (props) => {
               <Menu.Item key="/vigenere" onClick={_ => history.push('/vigenere')}>Vigenere</Menu.Item>
               <Menu.Item key="/escitala" onClick={_ => history.push('/escitala')}>Scytale</Menu.Item>
               <Menu.Item key="/rc4" onClick={_ => history.push('/rc4')}>RC4</Menu.Item>
+              <Menu.Item key="/rc4" onClick={_ => history.push('/des')}>DES</Menu.Item>
               {/*<Menu.Item key="/vernam" onClick={_ => history.push('/vernam')}>Vernam</Menu.Item>*/}
             </SubMenu>
             {/* <SubMenu key="sub2" icon={<LaptopOutlined />} title="subnav 2">
