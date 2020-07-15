@@ -54,7 +54,7 @@ export const DES = () => {
         <div className="App">
             <div className="app-view">
                 <header className="App-header">
-                    <h1>RC4</h1>
+                    <h1>DES</h1>
                     <p style={{color: 'orange', wordBreak: 'break-all'}}>{cypherText}</p>
                 </header>
                 <div className='card-box'>
