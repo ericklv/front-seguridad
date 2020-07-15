@@ -2,11 +2,11 @@ import {Button, Input} from 'antd';
 import React, {useState, useEffect} from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {dark} from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import {api, rc4Raw} from './../../urls';
+import {api, des} from './../../urls';
 
 const {TextArea} = Input;
 
-const sourceLink = rc4Raw;
+const sourceLink = des;
 
 export const DES = () => {
 
