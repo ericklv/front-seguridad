@@ -24,7 +24,7 @@ export const RC4 = () => {
 
     useEffect(_ => {
         if (cypher !== null) encode()
-    }, [cypher])
+    }, [cypher]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const encode = () => {
         setCypherText("...call to API")
