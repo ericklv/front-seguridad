@@ -1,4 +1,4 @@
-export const api = "https://seguridad-spring-api.herokuapp.com/api/";
+export const api = "https://api-seguridad.onrender.com/api/";
 
 export const vigenereRaw = 'https://raw.githubusercontent.com/ericklv/api-seguridad/master/src/main/java/com/caesar/demo/service/Vigenere.java';
 
